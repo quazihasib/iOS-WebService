@@ -10,7 +10,8 @@
 
 
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) //1
-#define kLatestKivaLoansURL [NSURL URLWithString:@"https://api.meetup.com/2/groups?lat=51.509980&lon=-0.133700&page=20&key=1f5718c16a7fb3a5452f45193232"]
+#define kLatestKivaLoansURL [NSURL URLWithString:@"http://www.quaziridwanhasib.com/getData.php"]
+//"https://api.meetup.com/2/groups?lat=51.509980&lon=-0.133700&page=20&key=1f5718c16a7fb3a5452f45193232"]
 
 
 @interface ViewController ()
@@ -42,6 +43,21 @@ void getData()
     
     //NSArray* latestLoan = [json objectForKey:@"loans"];
     NSLog(@"mmm:%@",json);
+    
+    NSArray* latestLoan = [json objectForKey:@"result"];
+    //NSLog(@"mmm:%@",json);
+    //NSLog(@"id:%@",[latestLoan valueForKey:@"id"]);
+    //NSLog(@"name:%@", [latestLoan valueForKey:@"name"]);
+    //NSLog(@"result:%@",latestLoan);
+    
+    NSMutableArray *arrayName;
+    arrayName = [NSMutableArray arrayWithObjects:[latestLoan valueForKey:@"name"],nil];
+    NSLog(@"TheText = %@", arrayName);
+    
+    NSMutableArray *arrayImage;
+    arrayImage = [NSMutableArray arrayWithObjects:[latestLoan valueForKey:@"image"],nil];
+    NSLog(@"TheText = %@", arrayImage);
+
 }
 
 @end
